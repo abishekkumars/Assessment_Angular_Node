@@ -11,13 +11,13 @@ import { CategoryService } from './services/category.service';
 })
 export class AppComponent {
   title = 'Product';
-//   products: Iproduct[] = [];
-//   categories: Icategory[]=[];
-//   constructor(private productService: ProductService, private categoryService: CategoryService) {
-//     productService.GetProduct().subscribe((c) => { this.products = c; } );
-//     categoryService.GetCategory().subscribe((p) => { this.categories = p; }
+  products: Iproduct[] = [];
+  categories: Icategory[]=[];
+  constructor(private productService: ProductService, private categoryService: CategoryService) {
+    productService.GetProduct().subscribe((c) => { this.products = c; } );
+    categoryService.GetCategory().subscribe((p) => { this.categories = p; }
    
-//     );
-// }
+    );
+}
 
 }

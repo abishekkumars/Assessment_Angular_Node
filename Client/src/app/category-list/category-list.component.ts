@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Icategory } from '../Model/icategory';
 import { CategoryService } from '../services/category.service';
 
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -15,16 +16,17 @@ export class CategoryListComponent implements OnInit {
   txtweight: number = 0;
   txtprocessor: string="";
   txtram: string = "";
+  
+  
   categories: Icategory[]=[];
-  
   constructor(private categoryService: CategoryService) {
-    
-      categoryService.GetCategory().subscribe((p) => { this.categories = p; }
-     
-      );
-  
-  
+    categoryService.GetCategory().subscribe((p) => { this.categories = p; });
+  
+
+
+
   }
+  
   SaveCategory(): void {
     this.category.id = this.txtId;
     this.category.Weight = this.txtweight;

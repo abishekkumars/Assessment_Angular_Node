@@ -1,8 +1,8 @@
-import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Iproduct } from '../Model/iproduct';
-
+import { ProductService } from '../services/product.service';
 import { FormsModule } from '@angular/forms';
+import { FormGroup,FormBuilder,FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -12,16 +12,21 @@ import { FormsModule } from '@angular/forms';
 export class ProductListComponent implements OnInit {
 
   product: Iproduct = {} as Iproduct;
+  products: Iproduct[] = [];
 
   txtId: number = 0;
   txtname: string = "";
   txtprize: number=0;
   txtcountry: string = "";
   txtcategory: number = 0;
-  products:Iproduct []=[];
+  
+  // formvalue !:FormGroup;
   
   constructor(private productService: ProductService) {
+    // productService.GetProduct().subscribe((c) => { this.products = c; } );
+    // private productService: ProductService,private formbuilder :FormBuilder
     productService.GetProduct().subscribe((c) => { this.products = c; } );
+    
   }
   SaveProduct(): void {
     this.product.id = this.txtId;
@@ -47,7 +52,19 @@ export class ProductListComponent implements OnInit {
   DeleteProduct(): void {
     this.productService.RemoveProduct(this.txtId).subscribe(res => console.log(res));
   }
+  // Edit(row:any){
+    
+  // }
   ngOnInit(): void {
+    // this.formvalue=this.formbuilder.group({
+    //   id:[''],
+    //   name:[''],
+    //   price:[''],
+    //   country:[''],
+    //   category:['']
+
+
+    // })
   }
 
 }
